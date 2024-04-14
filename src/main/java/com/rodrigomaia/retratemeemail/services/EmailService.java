@@ -42,9 +42,8 @@ public class EmailService {
             emailModel.setStatusEmail(EnumStatusEmail.SENT);
         } catch (MailException e){
             emailModel.setStatusEmail(EnumStatusEmail.ERROR);
+        } finally {
+            return emailRepository.save(emailModel);
         }
-
-        return emailRepository.save(emailModel);
     }
-
 }
